@@ -16,10 +16,12 @@ No test runner is configured.
 
 ## Architecture
 
-This is a single-component React app (Vite + React 19). All state and logic live in [src/App.jsx](src/App.jsx) — there are no sub-components, custom hooks, or external state management.
+React 19 app (Vite). Component tree:
 
-**Known intentional issues (part of a course exercise):**
-- Bug: `amount` is stored as a string, so `totalIncome` and `totalExpenses` use string concatenation instead of numeric addition.
-- Transaction item 4 ("Freelance Work") is typed as `"expense"` but categorized as `"salary"` — inconsistent seed data.
-- No delete functionality on transactions.
-- All logic is monolithic inside `App`.
+- `App` — holds the `transactions` array state and `categories` list; passes data and callbacks down
+  - `Summary` — receives `transactions`, computes `totalIncome`, `totalExpenses`, and `balance` internally
+  - `TransactionForm` — owns its own form field state; calls `onAdd(transaction)` on submit
+  - `TransactionList` — owns filter state (`filterType`, `filterCategory`); renders filtered rows
+    - `Transaction` — stateless row component rendering a single `<tr>`
+
+No routing, no global state management, no custom hooks.
