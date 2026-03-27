@@ -21,7 +21,7 @@ React 19 app (Vite). Component tree:
 - `App` — holds the `transactions` array state and `categories` list; passes data and callbacks down
   - `Summary` — receives `transactions`, computes `totalIncome`, `totalExpenses`, and `balance` internally
   - `TransactionForm` — owns its own form field state; calls `onAdd(transaction)` on submit
-  - `TransactionList` — owns filter state (`filterType`, `filterCategory`); renders filtered rows
-    - `Transaction` — stateless row component rendering a single `<tr>`
+  - `TransactionList` — owns filter state (`filterType`, `filterCategory`); renders filtered rows; passes `onDelete` to each row
+    - `Transaction` — stateless row component rendering a single `<tr>` with a delete button
 
 No routing, no global state management, no custom hooks.
