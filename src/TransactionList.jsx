@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Transaction from './Transaction';
 
-function TransactionList({ transactions, categories, onDelete }) {
+function TransactionList({ transactions, categories, onDelete, onEdit }) {
   const [filterType, setFilterType] = useState("all");
   const [filterCategory, setFilterCategory] = useState("all");
 
@@ -42,7 +42,7 @@ function TransactionList({ transactions, categories, onDelete }) {
         </thead>
         <tbody>
           {filtered.map(t => (
-            <Transaction key={t.id} transaction={t} onDelete={onDelete} />
+            <Transaction key={t.id} transaction={t} onDelete={onDelete} onEdit={onEdit} />
           ))}
         </tbody>
       </table>
